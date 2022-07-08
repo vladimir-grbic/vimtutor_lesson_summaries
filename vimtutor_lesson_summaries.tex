@@ -1,0 +1,261 @@
+\documentclass[handout, 10pt]{beamer}
+
+% Handout settings
+\usepackage{pgfpages}
+\pgfpagesuselayout{4 on 1}[letterpaper, border shrink=5mm, landscape]
+
+% Beamer settings
+\usetheme{default}
+\usecolortheme{dove}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Format settings
+% Set left margin of all list to 0pt
+\setlength{\leftmargini}{0pt}
+% Remove space before table item (leftmargin=* equivalent)
+\renewcommand{\tabcolsep}{0pt}
+
+% Fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+% Graphics and objects
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+
+% Mathematics
+\usepackage{amsmath, amsfonts, amsthm}
+
+% n^{th}
+\usepackage[super]{nth} % Example: \nth{1}, \nth{2}, \nth{3}, \nth{4}
+
+% Hyperlink Setup
+\usepackage{hyperref}
+\urlstyle{same} % Normal looking URL
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=magenta,
+	urlcolor=black % cyan,
+}
+
+% Code Environment
+\definecolor{codegray}{gray}{0.9}
+\newcommand{\code}[2][black]{\textcolor{#1}{\colorbox{codegray}{\texttt{#2}}}}
+
+% Opening
+\title{VIMTUTOR LESSON SUMMARIES}
+\author{Vladimir Grbić}
+\institute{\href{https://vladimirgrbic.com}{vladimirgrbic.com}}
+\date{} % January 15, 2022 <- May 24, 2021 <- March 20, 2021
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Lesson 1 Summary}
+	\begin{enumerate}
+		\item The cursor is moved using either the arrow keys or the
+			\code{hjkl} keys. \\
+		\code{h} (left) $ \quad $ \code{j} (down) $ \quad $ \code{k} (up) $
+		\quad $ \code{l} (right)
+
+		\item To start Vim from the shell prompt type: \code{vim FILENAME
+			<ENTER>}
+
+		\item To exit Vim type: \code{<ESC> :q! <ENTER>} to trash all
+			changes. \\
+		OR type: \code{<ESC> :wq <ENTER>} to save the changes.
+
+		\item To delete the character at the cursor type: \code{x}
+
+		\item To insert or append text type: \\
+		\code{i type inserted text <ESC>} insert before the cursor \\
+		\code{A type appended text <ESC>} append after the line
+	\end{enumerate}
+	\begin{block}{Note}
+		Pressing \code{<ESC>} will place you in Normal mode or will cancel an
+		unwanted and partially completed command.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Lesson 2 Summary}
+	\begin{enumerate}
+		\item To delete from the cursor up to the next word type: \code{dw}
+
+		\item To delete from the cursor to the end of a line type: \code{d\$}
+
+		\item To delete a whole line type: \code{dd}
+
+		\item To repeat a motion prepend it with a number: \code{2w}
+
+		\item The format for a change command is: \\
+		\begin{center}
+			\code{operator  [number]  motion}
+		\end{center}
+		where:
+		\begin{itemize}
+			\item operator - is what to do, such as \code{d} for delete
+
+			\item \text{[number]} - is an optional count to repeat the motion
+
+			\item motion   - moves over the text to operate on, such as
+				\code{w} (word), \code{\$} (to the end of line), etc.
+		\end{itemize}
+
+		\item To move to the start of the line use a zero: \code{0}
+
+		\item To undo previous actions, type: \code{u} (lowercase u) \\
+		To undo all the changes on a line, type: \code{U} (capital U) \\
+		To undo the undo's, type: \code{CTRL-R}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Lesson 3 Summary}
+	\begin{enumerate}
+		\item To put back text that has just been deleted, type \code{p}. This
+			puts the	deleted text AFTER the cursor (if a line was deleted it
+			will go on the line below the cursor).
+
+		\item To replace the character under the cursor, type \code{r} and then
+			the character you want to have there.
+
+		\item The change operator allows you to change from the cursor to where
+			the	motion takes you. \\
+			eg. Type \code{ce} to change from the cursor to the end of the
+			word, \code{c\$} to change to the end of a line, or \code{cc} to
+			change the whole line.
+
+		\item  The format for change is: \\
+		\code{c  [number]  motion}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Lesson 4 Summary}
+	\begin{enumerate}
+		\item
+		\begin{tabular}[t]{rl}
+			\code{CTRL-G} & ~displays your location in the file and the file
+			status. \\
+			\code{G} & ~moves to the end of the file. \\
+			\code{number G} & ~moves to that line number.\\
+			\code{gg} & ~moves to the first line.
+		\end{tabular}
+
+		\item Typing \code{/} followed by a phrase searches FORWARD for the
+			phrase.	\\
+			Typing \code{?} followed by a phrase searches BACKWARD for the
+			phrase. \\
+			After a search type \code{n} to find the next occurrence in the
+			same direction or \code{N} to search in the opposite direction. \\
+			\code{CTRL-O} takes you back to older positions, \code{CTRL-I} to
+			newer positions.
+
+		\item Typing  \code{\%}  while the cursor is on a (,),[,],\{, or \}
+			goes to its match.
+
+		\item To substitute new for the first old in a line type
+			\code{:s/old/new} \\
+			To substitute new for all `old's on a line type \code{:s/old/new/g}
+			\\
+			To substitute phrases between two line \#'s type
+			\code{:\#,\#s/old/new/g} \\
+			To substitute all occurrences in the file type
+			\code{:\%s/old/new/g} \\
+			To ask for confirmation each time add `c' \code{:\%s/old/new/gc}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Lesson 5 Summary}
+	\begin{enumerate}
+		\item \code{:!command} executes an external command. \\[6pt]
+		Some useful examples are:
+		\begin{table}
+			\begin{tabular}{lll}
+				(Windows) & ~(Unix) & \\
+				\code{:!dir} & ~\code{:!ls} & ~-- shows a directory listing. \\
+				\code{:!del FILENAME} & ~\code{:!rm FILENAME} & ~-- removes
+				file FILENAME.
+			\end{tabular}
+		\end{table}
+
+		\item \code{:w FILENAME} writes the current Vim file to disk with name
+			FILENAME.
+
+		\item \code{v  motion  :w FILENAME} saves the Visually selected lines
+			in file FILENAME.
+
+		\item \code{:r FILENAME}  retrieves disk file FILENAME and puts it
+			below the cursor position.
+
+		\item \code{:r !dir}  reads the output of the \code{dir} command and
+			puts it below the cursor position.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Lesson 6 Summary}
+	\begin{enumerate}
+		\item Type \code{o} to open a line BELOW the cursor and start Insert
+			mode. \\
+			Type \code{O} to open a line ABOVE the cursor.
+
+		\item Type  \code{a}  to insert text AFTER the cursor. \\
+			Type \code{A} to insert text after the end of the line.
+
+		\item The \code{e} command moves to the end of a word.
+
+		\item The \code{y} operator yanks (copies) text, \code{p} puts (pastes)
+			it.
+
+		\item Typing a capital \code{R} enters Replace mode until \code{<ESC>}
+			is pressed.
+
+		\item Typing ``\code{:set xxx}'' sets the option ``xxx''. Some options
+			are:
+			\begin{table}[H]
+				\centering
+				\begin{tabular}{llcl}
+					`ic' & ~`ignorecase' & ~~~ &~ignore upper/lower case when
+					searching \\
+					`is' & ~`incsearch' & ~~~ &~show partial matches for a
+					search phrase \\
+					`hls' & ~`hlsearch' & ~~~ &~highlight all matching phrases
+				\end{tabular}
+			\end{table}
+			You can either use the long or the short option name.
+
+		\item Prepend ``no'' to switch an option off: \code{:set noic}
+	\end{enumerate}
+
+%	\begin{block}{Note}
+%		If you want to ignore case for just one search command, use
+%		\code{\textbackslash c} in the phrase: \code{/ignore\textbackslash c
+%		<ENTER>}
+%	\end{block}
+\end{frame}
+
+\begin{frame}{Lesson 7 Summary}
+	\begin{enumerate}
+		\item Type \code{:help} or press \code{<F1>} or \code{<Help>}  to open
+			a help window.
+
+		\item Type \code{:help cmd} to find help on \code{cmd}.
+
+		\item Type \code{CTRL-W CTRL-W} to jump to another window.
+
+		\item Type \code{:q} to close the help window.
+
+		\item Create a vimrc startup script to keep your preferred settings.
+
+		\item When typing a \code{:} command, press \code{CTRL-D} to see
+			possible completions. \\
+			Press \code{<TAB>} to use one completion.
+	\end{enumerate}
+\end{frame}
+
+\end{document}
