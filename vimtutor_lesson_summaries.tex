@@ -62,22 +62,23 @@
 	\begin{enumerate}
 		\item The cursor is moved using either the arrow keys or the
 			\code{hjkl} keys. \\
-		\code{h} (left) $ \quad $ \code{j} (down) $ \quad $ \code{k} (up) $
-		\quad $ \code{l} (right)
+			\code{h} (left) $ \quad $ \code{j} (down) $ \quad $ \code{k} (up) $
+			\quad $ \code{l} (right)
 
 		\item To start Vim from the shell prompt type: \code{vim FILENAME
 			<ENTER>}
 
 		\item To exit Vim type: \code{<ESC> :q! <ENTER>} to trash all
 			changes. \\
-		OR type: \code{<ESC> :wq <ENTER>} to save the changes.
+			OR type: \code{<ESC> :wq <ENTER>} to save the changes.
 
 		\item To delete the character at the cursor type: \code{x}
 
 		\item To insert or append text type: \\
-		\code{i type inserted text <ESC>} insert before the cursor \\
-		\code{A type appended text <ESC>} append after the line
+			\code{i type inserted text <ESC>} insert before the cursor \\
+			\code{A type appended text <ESC>} append after the line
 	\end{enumerate}
+
 	\begin{block}{Note}
 		Pressing \code{<ESC>} will place you in Normal mode or will cancel an
 		unwanted and partially completed command.
@@ -111,8 +112,8 @@
 		\item To move to the start of the line use a zero: \code{0}
 
 		\item To undo previous actions, type: \code{u} (lowercase u) \\
-		To undo all the changes on a line, type: \code{U} (capital U) \\
-		To undo the undo's, type: \code{CTRL-R}
+			To undo all the changes on a line, type: \code{U} (capital U) \\
+			To undo the undo's, type: \code{CTRL-R}
 	\end{enumerate}
 \end{frame}
 
@@ -132,20 +133,20 @@
 			change the whole line.
 
 		\item  The format for change is: \\
-		\code{c  [number]  motion}
+			\code{c  [number]  motion}
 	\end{enumerate}
 \end{frame}
 
 \begin{frame}{Lesson 4 Summary}
 	\begin{enumerate}
 		\item
-		\begin{tabular}[t]{rl}
-			\code{CTRL-G} & ~displays your location in the file and the file
-			status. \\
-			\code{G} & ~moves to the end of the file. \\
-			\code{number G} & ~moves to that line number.\\
-			\code{gg} & ~moves to the first line.
-		\end{tabular}
+			\begin{tabular}[t]{rl}
+				\code{CTRL-G} & ~displays your location in the file and the
+				file status. \\
+				\code{G} & ~moves to the end of the file. \\
+				\code{number G} & ~moves to that line number.\\
+				\code{gg} & ~moves to the first line.
+			\end{tabular}
 
 		\item Typing \code{/} followed by a phrase searches FORWARD for the
 			phrase.	\\
